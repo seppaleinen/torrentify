@@ -1,6 +1,19 @@
 #!/usr/bin/env ruby
 require_relative '../lib/code'
 
+require 'rubygems'
+require 'mechanize'
+
+agent = Mechanize.new
+
+page = agent.get('http://google.com/')
+
+pp page
+
+page.links.each do |link|
+  puts link.text
+end
+
 begin
   puts "HEJ"
 end
