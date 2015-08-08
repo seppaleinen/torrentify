@@ -3,3 +3,11 @@ rvm:
   - 2.0.0
 
 before_install: gem install bundler -v 1.10.6
+
+env:
+  global:
+    -  CODECLIMATE_REPO_TOKEN="dde4ba83df1f56ca989e97fa0ce037374f2aca04225a15f0e06f6a597e0749e2"
+
+after_success:
+  - bundle exec rake codeclimate
+  - bundle exec rake coveralls

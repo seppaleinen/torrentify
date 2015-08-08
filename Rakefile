@@ -20,3 +20,27 @@ Rake::TestTask.new(:unitTest) do |t|
   t.verbose = false
   t.test_files = FileList['test/*_test.rb']
 end
+
+desc 'Run codeclimate - Sends coverage info to CodeClimate when in CI'
+task :codeclimate => :test do
+  require 'simplecov'
+  require 'codeclimate-test-reporter'
+  SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter[
+      SimpleCov::Formatter::HTMLFormatter,
+      CodeClimate::TestReporter::Formatter
+  ]
+  CodeClimate::TestReporter::Formatter.new.format(SimpleCov.result)
+end
+
+require 'coveralls/rake/task'
+Coveralls::RakeTask.new
+desc 'Run Coveralls - Sends coverage info to coveralls.io when in CI'
+task :coveralls => [:test, 'coveralls:push'] do
+  require 'simplecov'
+  require 'coveralls'
+  SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter[
+        SimpleCov::Formatter::HTMLFormatter,
+        Coveralls::SimpleCov::Formatter
+  ]
+  Coveralls.wear_merged!
+end
