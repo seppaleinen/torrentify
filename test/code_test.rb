@@ -59,7 +59,7 @@ class TestClass < Test::Unit::TestCase
   end
 
   def test_download
-    result = @@page.link_with(:href => 'http://torcache.net/torrent')
+    result = @@page.link_with(:href => 'http://torcache.net/torrent/*')
     puts 'RESULTS2: ', result
   end
 end

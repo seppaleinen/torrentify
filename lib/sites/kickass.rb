@@ -7,7 +7,30 @@ class KickassParser
     @page = page
   end
 
-  get_list_of_torrents
-    @page.link_with(:href => 'http://torcache.net/torrent')
-  end  
+  def torrent_url(div)
+    links = div.search(".//a[@title='Download torrent file']")
+    value = ''
+    links.each do |link|
+      value = link.attributes['href']
+    end
+    value
+  end
+
+  def torrent_name(div)
+    links = div.search(".//a[@class='cellMainLink']")
+    value = ''
+    links.each do |link|
+      value = link.content
+    end
+    value
+  end
+
+  def main_divs
+    divs = @page.search(".//tr[@class='even' or @class='odd']")
+    divs.each do |div|
+      puts torrent_url(div)
+      puts torrent_name(div)
+    end
+    divs
+  end
 end
