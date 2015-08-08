@@ -3,10 +3,9 @@ require 'rake/testtask'
 #require 'rspec/core/rake_task'
 require 'bundler/gem_tasks'
 
-task :default => :test
+desc 'Clean, test and install app'
+task :default => [:test, :install]
 
-#desc 'Clean workspace. Run RuboCop. Run spec and unittests, and build.'
-#task :test => [:clean, :rubocop, :specTest, :unitTest, :build]
 desc 'test'
 task :test => [:clean, :unitTest]
 
@@ -19,5 +18,5 @@ desc 'Run Unittests'
 Rake::TestTask.new(:unitTest) do |t|
   t.libs << 'test'
   t.verbose = false
-  t.test_files = FileList['test/unitTests/*_test.rb']
+  t.test_files = FileList['test/*_test.rb']
 end
