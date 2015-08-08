@@ -2,11 +2,11 @@
 
 require_relative 'code.rb'
 
+# Class responsible for client-interface
 class Menu
-  #Prints available commands
+  # Prints available commands
   def self.run
-    puts "Enter search criteria"
-    value = gets.chomp
-    puts "#{value}"
+    puts 'Enter search criteria'
+    gets.chomp
   end
 end

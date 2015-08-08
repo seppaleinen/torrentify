@@ -1,17 +1,22 @@
 require 'rake'
 require 'rake/testtask'
-#require 'rspec/core/rake_task'
 require 'bundler/gem_tasks'
 
 desc 'Clean, test and install app'
 task :default => [:test, :install]
 
 desc 'test'
-task :test => [:clean, :unitTest]
+task :test => [:clean, :unitTest, :rubocop]
 
 desc 'Remove coverage and pkg dirs before compilation'
 task :clean do
   rm_rf %w(coverage pkg)
+end
+
+desc 'Run RuboCop - Tool for detecting codestyle violations'
+task :rubocop do
+  require 'rubocop/rake_task'
+  RuboCop::RakeTask.new
 end
 
 desc 'Run Unittests'

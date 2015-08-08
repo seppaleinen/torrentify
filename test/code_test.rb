@@ -2,10 +2,11 @@ require_relative 'test_helper'
 
 require_relative '../lib/code.rb'
 
+# Tests for code
 class TestClass < Test::Unit::TestCase
   class << self
     def startup
-      puts "Getting page and storing in class for reuse"
+      puts 'Getting page and storing in class for reuse'
       @@page = get_web_page('https://kat.cr/usearch/a%20pigeon%20sat%20on%20a%20branch%20reflecting%20on%20existence/')
     end
 
@@ -15,9 +16,9 @@ class TestClass < Test::Unit::TestCase
     def suite
       mysuite = super
       def mysuite.run(*args)
-        TestClass.startup()
+        TestClass.startup
         super
-        TestClass.shutdown()
+        TestClass.shutdown
       end
       mysuite
     end
@@ -26,9 +27,10 @@ class TestClass < Test::Unit::TestCase
   def setup
     puts 'runs before each test'
   end
+
   def teardown
     puts 'runs after each test'
-  end 
+  end
 
   def test_get_web_page_kickass
     assert_not_nil @@page
@@ -58,7 +60,7 @@ class TestClass < Test::Unit::TestCase
 
   def test_download
     result = @@page.link_with(:href => 'http://torcache.net/torrent')
-    puts "RESULTS2: ", result
+    puts 'RESULTS2: ', result
   end
 end
 
