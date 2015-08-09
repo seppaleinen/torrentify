@@ -4,7 +4,7 @@ require 'rubygems'
 # require 'bundler/setup'
 
 group :test do
-  # gem 'rspec' , '2.14.0'
+  # gem 'test-unit' , '3.1.3'
 end
 
 gemspec

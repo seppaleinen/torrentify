@@ -6,13 +6,26 @@ require_relative '../../lib/code.rb'
 
 # Tests for kickass
 class TestKickassClass < Test::Unit::TestCase
-  def test_hej
+  def test_main_divs
     page = get_web_page('https://kat.cr/usearch/a%20pigeon%20sat%20on%20a%20branch%20reflecting%20on%20existence/')
     parser = KickassParser.new(page)
-    result = parser.main_divs
-    assert_not_nil result
-    result.each do |link|
-      puts link
+    out = capture_stdout do
+      result = parser.main_divs
+      assert_not_nil result
     end
+    assert_not_nil out
+    puts out.string
+  end
+end
+
+# Capture of stdout to STDOUT var
+module Kernel
+  def capture_stdout
+    out = StringIO.new
+    $stdout = out
+    yield
+    return out
+  ensure
+    $stdout = STDOUT
   end
 end

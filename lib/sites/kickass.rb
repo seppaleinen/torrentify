@@ -7,6 +7,33 @@ class KickassParser
     @page = page
   end
 
+  def seeders(div)
+    links = div.search(".//td[@class='red lasttd center']")
+    value = ''
+    links.each do |link|
+      value = link.content
+    end
+    value
+  end
+
+  def leechers(div)
+    links = div.search(".//td[@class='green center']")
+    value = ''
+    links.each do |link|
+      value = link.content
+    end
+    value
+  end
+
+  def size(div)
+    links = div.search(".//td[@class='nobr center']")
+    value = ''
+    links.each do |link|
+      value = link.content
+    end
+    value
+  end
+
   def torrent_url(div)
     links = div.search(".//a[@title='Download torrent file']")
     value = ''
@@ -28,8 +55,12 @@ class KickassParser
   def main_divs
     divs = @page.search(".//tr[@class='even' or @class='odd']")
     divs.each do |div|
+      puts '-----------------'
       puts torrent_url(div)
       puts torrent_name(div)
+      puts size(div)
+      puts seeders(div)
+      puts leechers(div)
     end
     divs
   end
