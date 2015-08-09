@@ -7,7 +7,8 @@ require_relative '../../lib/mechanize_manager.rb'
 # Tests for kickass
 class TestKickassClass < Test::Unit::TestCase
   def test_main_divs
-    page = MechanizeManager.new.get_web_page('https://kat.cr/usearch/a%20pigeon%20sat%20on%20a%20branch%20reflecting%20on%20existence/')
+    search_term = 'a pigeon sat on a branch reflecting on existence'
+    page = MechanizeManager.new.search_kickass(search_term)
     parser = KickassParser.new(page)
     out = capture_stdout do
       result = parser.main_divs
