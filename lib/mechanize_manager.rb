@@ -1,6 +1,7 @@
 #!/usr/bin/ruby
 require 'rubygems'
 require 'mechanize'
+require_relative 'sites/kickass_parser.rb'
 
 # Manager responsible for scraping webpagem
 class MechanizeManager
@@ -18,7 +19,10 @@ class MechanizeManager
 
   def search_kickass(search_term)
     white_space = '%20'
-    url = 'https://kat.cr/usearch/' << search_term.gsub!(' ', white_space)
-    Agent.get_web_page(url)
+    url = 'https://kat.cr/usearch/' << search_term.gsub(' ', white_space)
+    puts "Searching for '#{search_term}' on kickass"
+    page = Agent.get_web_page(url)
+    KickassParser.new(page).main_divs
+    page
   end
 end

@@ -8,7 +8,7 @@ class Menu
   def self.run
     puts 'Enter search criteria'
     choice = gets.chomp
-    choose(choice)
+    MechanizeManager.new.search_kickass(choice)
     choice
   end
 
