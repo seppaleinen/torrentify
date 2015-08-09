@@ -1,6 +1,6 @@
 #!/usr/bin/ruby
 
-require_relative 'code.rb'
+require_relative 'mechanize_manager.rb'
 
 # Class responsible for client-interface
 class Menu
