@@ -1,7 +1,7 @@
 #!/usr/bin/ruby
 require_relative '../test_helper.rb'
 
-require_relative '../../lib/sites/kickass.rb'
+require_relative '../../lib/sites/kickass_parser.rb'
 require_relative '../../lib/code.rb'
 
 # Tests for kickass
