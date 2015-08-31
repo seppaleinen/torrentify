@@ -4,7 +4,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
 Gem::Specification.new do |spec|
   spec.name          = 'torrentify'
-  spec.version       = 0.1
+  spec.version       = 0.2
   spec.authors       = ['david eriksson']
   spec.email         = ['davideriksson@swedenmail.com']
 
@@ -22,8 +22,6 @@ Gem::Specification.new do |spec|
 
   #spec.files         = `git ls-files`.split($\).reject { |f| f.match(%r{^(test|spec|features)/}) }
   spec.files         = `git ls-files`.split($\)
-  spec.bindir        = 'bin'
-  spec.executables   = ['torrentify']
   spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
   spec.require_paths = ['lib']
 
