@@ -1,6 +1,6 @@
-require_relative 'test_helper'
+require_relative '../test_helper'
 
-require_relative '../lib/mechanize_manager.rb'
+require_relative '../../lib/mechanize_manager'
 
 # Tests for code
 class TestMechanizeManagerClass < Test::Unit::TestCase

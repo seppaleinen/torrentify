@@ -1,7 +1,7 @@
 #!/usr/bin/ruby
 require 'rubygems'
 require 'mechanize'
-require_relative 'sites/kickass_parser.rb'
+require_relative 'sites/kickass_parser'
 
 # Manager responsible for scraping webpagem
 class MechanizeManager

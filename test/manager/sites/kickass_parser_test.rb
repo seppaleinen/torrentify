@@ -1,8 +1,8 @@
 #!/usr/bin/ruby
-require_relative '../test_helper.rb'
+require_relative '../../test_helper'
 
-require_relative '../../lib/sites/kickass_parser.rb'
-require_relative '../../lib/mechanize_manager.rb'
+require_relative '../../../lib/sites/kickass_parser'
+require_relative '../../../lib/mechanize_manager'
 
 # Tests for kickass
 class TestKickassClass < Test::Unit::TestCase

@@ -1,8 +1,11 @@
 require_relative 'test_helper'
 
-# Tests for executable torrentify
-class TestClass < Test::Unit::TestCase
-  def test_script_method
-    assert_equal 'HEJ', 'HEJ'
+require_relative '../lib/torrentify'
+
+# Tests for torrentify
+class TestTorrentify < Test::Unit::TestCase
+  def test_first
+    search_param = 'Hej'
+    Torrentify.search(search_param)
   end
 end

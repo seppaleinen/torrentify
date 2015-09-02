@@ -1,6 +1,6 @@
 #!/usr/bin/ruby
 
-require 'torrent_model'
+require_relative '../../model/torrent_model'
 
 # Class responsible for parsing
 # the page response from kickass
