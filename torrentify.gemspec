@@ -25,8 +25,8 @@ Gem::Specification.new do |spec|
   spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
   spec.require_paths = ['lib']
 
+  spec.add_runtime_dependency 'mechanize', '2.7.3'
   spec.add_development_dependency 'simplecov', '>= 0.7.1', '< 1.0.0'
-  spec.add_development_dependency 'mechanize', '2.7.3'
   spec.add_development_dependency 'bundler', '~> 1.10.6'
   spec.add_development_dependency 'rake', '~> 10.4.2'
   spec.add_development_dependency 'codeclimate-test-reporter', '0.4.8'
