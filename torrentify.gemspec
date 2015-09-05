@@ -4,12 +4,12 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
 Gem::Specification.new do |spec|
   spec.name          = 'torrentify'
-  spec.version       = 0.2
+  spec.version       = 0.3
   spec.authors       = ['david eriksson']
   spec.email         = ['davideriksson@swedenmail.com']
 
-  spec.summary       = %w(Baseapp for webscraping torrent-sites)
-  spec.description   = %w(Baseapp for webscraping torrent-sites)
+  spec.summary       = 'Baseapp for webscraping torrent-sites'
+  spec.description   = 'Baseapp for webscraping torrent-sites'
   spec.homepage      = 'http://seppaleinen.github.io/torrentify'
 
   # Prevent pushing this gem to RubyGems.org by setting 'allowed_push_host', or
