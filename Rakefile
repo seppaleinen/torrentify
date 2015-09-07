@@ -23,7 +23,7 @@ desc 'Run Unittests'
 Rake::TestTask.new(:unitTest) do |t|
   t.libs << 'test'
   t.verbose = false
-  t.test_files = FileList['test/*_test.rb', 'test/sites/*_test.rb']
+  t.test_files = FileList['test/**/*_test.rb']
 end
 
 desc 'Run codeclimate - Sends coverage info to CodeClimate when in CI'

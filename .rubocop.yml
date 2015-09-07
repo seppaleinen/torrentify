@@ -9,3 +9,6 @@ Style/HashSyntax:
 
 Style/ClassVars:
   Enabled: false
+
+Metrics/MethodLength:
+  Enabled: false

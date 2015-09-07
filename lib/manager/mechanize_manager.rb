@@ -25,4 +25,13 @@ class MechanizeManager
     KickassParser.new(page).main_divs
     page
   end
+
+  def search_piratebay(search_term)
+    white_space = '%20'
+    pirate_url = 'https://thepiratebay.mn/search/'
+    url = pirate_url << search_term.gsub(' ', white_space)
+    page = Agent.get_web_page(url)
+    PirateBayParser.new(page).main_divs
+    page
+  end
 end
