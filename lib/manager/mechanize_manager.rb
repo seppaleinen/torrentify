@@ -2,6 +2,8 @@
 require 'rubygems'
 require 'mechanize'
 require_relative 'sites/kickass_parser'
+require_relative 'sites/piratebay_parser'
+require_relative 'sites/isohunt_parser'
 
 # Manager responsible for scraping webpagem
 class MechanizeManager
@@ -32,6 +34,15 @@ class MechanizeManager
     url = pirate_url << search_term.gsub(' ', white_space)
     page = Agent.get_web_page(url)
     PirateBayParser.new(page).main_divs
+    page
+  end
+
+  def search_isohunt(search_term)
+    white_space = '%20'
+    isohunt_url = 'https://isohunt.to/torrents/?ihq='
+    url = isohunt_url << search_term.gsub(' ', white_space)
+    page = Agent.get_web_page(url)
+    IsohuntParser.new(page).main_divs
     page
   end
 end
