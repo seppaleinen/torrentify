@@ -4,6 +4,7 @@ require 'mechanize'
 require_relative 'sites/kickass_parser'
 require_relative 'sites/piratebay_parser'
 require_relative 'sites/isohunt_parser'
+require_relative 'sites/extratorrent_parser'
 
 # Manager responsible for scraping webpagem
 class MechanizeManager
@@ -43,6 +44,15 @@ class MechanizeManager
     url = isohunt_url << search_term.gsub(' ', white_space)
     page = Agent.get_web_page(url)
     IsohuntParser.new(page).main_divs
+    page
+  end
+
+  def search_extratorrent(search_term)
+    white_space = '+'
+    extratorrent_url = 'http://extratorrent.cc/search/?search='
+    url = extratorrent_url << search_term.gsub(' ', white_space)
+    page = Agent.get_web_page(url)
+    ExtratorrentParser.new(page).main_divs
     page
   end
 end
