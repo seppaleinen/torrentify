@@ -41,13 +41,14 @@ class ExtratorrentParser
 
     def self.torrent_name(div)
       links = div.search('.//a')
-      links[0].attributes['href']
+      # Get link title and strip Download och torrent from result
+      title = links[0].attributes['title'].text
+      title.gsub!('Download ', '').gsub!(' torrent', '')
     end
   end
 
   def main_divs
     divs = @page.search(".//tr[@class='tlr' or @class='tlz']")
-    puts divs
     divs.each do |div|
       puts '-----------------'
       puts Parser.torrent_url(div)

@@ -15,7 +15,6 @@ class TestKickassClass < Test::Unit::TestCase
       assert_not_nil result
     end
     assert_not_nil out
-    puts out.string
   end
 end
 
