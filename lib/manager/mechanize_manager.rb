@@ -15,6 +15,7 @@ class MechanizeManager
   module Agent
     def self.get_web_page(url)
       agent = Mechanize.new
+      agent.pluggable_parser.default = Mechanize::Page
       agent.agent.http.verify_mode = OpenSSL::SSL::VERIFY_NONE
       agent.get(url)
     end
@@ -26,7 +27,6 @@ class MechanizeManager
     puts "Searching for '#{search_term}' on kickass"
     page = Agent.get_web_page(url)
     KickassParser.new(page).main_divs
-    page
   end
 
   def search_piratebay(search_term)
@@ -35,7 +35,6 @@ class MechanizeManager
     url = pirate_url << search_term.gsub(' ', white_space)
     page = Agent.get_web_page(url)
     PirateBayParser.new(page).main_divs
-    page
   end
 
   def search_isohunt(search_term)
@@ -44,7 +43,6 @@ class MechanizeManager
     url = isohunt_url << search_term.gsub(' ', white_space)
     page = Agent.get_web_page(url)
     IsohuntParser.new(page).main_divs
-    page
   end
 
   def search_extratorrent(search_term)
@@ -53,6 +51,5 @@ class MechanizeManager
     url = extratorrent_url << search_term.gsub(' ', white_space)
     page = Agent.get_web_page(url)
     ExtratorrentParser.new(page).main_divs
-    page
   end
 end
