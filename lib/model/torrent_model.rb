@@ -11,15 +11,15 @@ class Torrent
   end
 
   def to_s
-    s = StringIO.open do |s|
-      s.puts 'torrent_file: ' + torrent_file.to_s
-      s.puts 'name: ' + name.to_s
-      s.puts 'size: ' + size.to_s
-      s.puts 'seeders: ' + seeders.to_s
-      s.puts 'leechers: ' + leechers.to_s
+    string = StringIO.open do |s|
+      s.puts 'torrent_file: ' + @torrent_file.to_s
+      s.puts 'name: ' + @name.to_s
+      s.puts 'size: ' + @size.to_s
+      s.puts 'seeders: ' + @seeders.to_s
+      s.puts 'leechers: ' + @leechers.to_s
       s.string
     end
-    return s
+    string
   end
 
   attr_reader :torrent_file

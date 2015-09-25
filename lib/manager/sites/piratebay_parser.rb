@@ -50,7 +50,7 @@ class PirateBayParser
   end
 
   def main_divs
-    divs = @page.search(".//tr")
+    divs = @page.search('.//tr')
     torrents = []
     divs.each do |div|
       torrent_file = Parser.torrent_url(div)
