@@ -10,22 +10,8 @@ class TestIsohuntClass < Test::Unit::TestCase
     search_term = 'a pigeon sat on a branch reflecting on existence'
     page = MechanizeManager.new.search_isohunt(search_term)
     parser = PirateBayParser.new(page)
-    out = capture_stdout do
-      result = parser.main_divs
-      assert_not_nil result
-    end
-    assert_not_nil out
-  end
-end
-
-# Capture of stdout to STDOUT var
-module Kernel
-  def capture_stdout
-    out = StringIO.new
-    $stdout = out
-    yield
-    return out
-  ensure
-    $stdout = STDOUT
+    result = parser.main_divs
+    assert_not_nil result
+    assert_false result.empty?
   end
 end

@@ -59,14 +59,16 @@ class KickassParser
 
   def main_divs
     divs = @page.search(".//tr[@class='even' or @class='odd']")
+    torrents = []
     divs.each do |div|
-      puts '-----------------'
-      puts Parser.torrent_url(div)
-      puts Parser.torrent_name(div)
-      puts Parser.size(div)
-      puts Parser.seeders(div)
-      puts Parser.leechers(div)
+      torrent_file = Parser.torrent_url(div)
+      name = Parser.torrent_name(div)
+      size = Parser.size(div)
+      seeders = Parser.seeders(div)
+      leechers = Parser.leechers(div)
+      torrent = Torrent.new(torrent_file, name, size, seeders, leechers)
+      torrents.push(torrent)
     end
-    divs
+    torrents
   end
 end
