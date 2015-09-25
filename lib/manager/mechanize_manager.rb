@@ -23,8 +23,8 @@ class MechanizeManager
 
   def search_kickass(search_term)
     white_space = '%20'
-    url = 'https://kat.cr/usearch/' << search_term.gsub(' ', white_space)
-    puts "Searching for '#{search_term}' on kickass"
+    kickass_url = 'https://kat.cr/usearch/'
+    url = kickass_url << search_term.gsub(' ', white_space)
     page = Agent.get_web_page(url)
     KickassParser.new(page).main_divs
   end

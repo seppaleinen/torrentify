@@ -7,7 +7,12 @@ require_relative 'manager/imdb_manager'
 # Responsible for running manager-methods
 module Torrentify
   def self.search(search_param)
-    MechanizeManager.new.search_kickass(search_param)
+    manager = MechanizeManager.new
+    kickass = manager.search_kickass(search_param)
+    piratebay = manager.search_piratebay(search_param)
+    isohunt = manager.search_isohunt(search_param)
+    extratorrent = manager.search_extratorrent(search_param)
+    [kickass, piratebay, isohunt, extratorrent]
   end
 
   def self.imdb_watchlist(userid)
