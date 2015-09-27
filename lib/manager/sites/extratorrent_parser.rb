@@ -11,6 +11,8 @@ class ExtratorrentParser
 
   # Parse values from html
   module Parser
+    BASEURL = 'http://extratorrent.cc'
+
     def self.seeders(div)
       links = div.search(".//td[@class='sy']")
       value = ''
@@ -36,7 +38,7 @@ class ExtratorrentParser
 
     def self.torrent_url(div)
       links = div.search('.//a')
-      links[0].attributes['href']
+      BASEURL + links[0].attributes['href']
     end
 
     def self.torrent_name(div)

@@ -47,7 +47,8 @@ class MechanizeManager
 
   def search_extratorrent(search_term)
     white_space = '+'
-    extratorrent_url = 'http://extratorrent.cc/search/?search='
+    baseurl = ExtratorrentParser::Parser::BASEURL
+    extratorrent_url = baseurl + '/search/?search='
     url = extratorrent_url << search_term.gsub(' ', white_space)
     page = Agent.get_web_page(url)
     ExtratorrentParser.new(page).main_divs
