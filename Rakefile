@@ -26,6 +26,13 @@ Rake::TestTask.new(:unitTest) do |t|
   t.test_files = FileList['test/**/*_test.rb']
 end
 
+desc 'Run Integrationtests'
+Rake::TestTask.new(:integrationTest) do |t|
+  t.libs << 'test'
+  t.verbose = false
+  t.test_files = FileList['test-integration/**/*_test.rb']
+end
+
 desc 'Run codeclimate - Sends coverage info to CodeClimate when in CI'
 task :codeclimate => :test do
   require 'simplecov'
