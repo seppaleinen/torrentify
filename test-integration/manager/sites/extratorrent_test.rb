@@ -9,7 +9,7 @@ class TestExtratorrentClass < Test::Unit::TestCase
   def test_connection_to_site
     search_term = 'a pigeon sat on a branch reflecting on existence'
 
-    result=[]
+    result = []
 
     assert_nothing_raised do
       result = MechanizeManager.new.search_extratorrent(search_term)
