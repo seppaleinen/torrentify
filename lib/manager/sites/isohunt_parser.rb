@@ -11,6 +11,8 @@ class IsohuntParser
 
   # Parse values from html
   module Parser
+    BASEURL = 'https://isohunt.to'
+
     def self.seeders(div)
       links = div.search(".//td[@class=' sy' or @class=' sn']")
       value = ''

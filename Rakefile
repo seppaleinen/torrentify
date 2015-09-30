@@ -27,7 +27,7 @@ Rake::TestTask.new(:unitTest) do |t|
 end
 
 desc 'Run Integrationtests'
-Rake::TestTask.new(:integrationTest) do |t|
+Rake::TestTask.new(:integrationTest => [:test]) do |t|
   t.libs << 'test'
   t.verbose = false
   t.test_files = FileList['test-integration/**/*_test.rb']

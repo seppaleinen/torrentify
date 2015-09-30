@@ -11,6 +11,8 @@ class PirateBayParser
 
   # Parse values from html
   module Parser
+    BASEURL = 'https://thepiratebay.mn'
+
     def self.seeders(div)
       links = div.search(".//td[@align='right']")
       links[0].content if !links.nil? && !links[0].nil?

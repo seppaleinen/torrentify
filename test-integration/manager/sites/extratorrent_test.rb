@@ -6,7 +6,7 @@ require_relative '../../../lib/manager/mechanize_manager'
 
 # Tests for kickass
 class TestExtratorrentClass < Test::Unit::TestCase
-  def test_connection_to_site
+  def ignore_test_connection_to_site
     search_term = 'a pigeon sat on a branch reflecting on existence'
 
     result = []

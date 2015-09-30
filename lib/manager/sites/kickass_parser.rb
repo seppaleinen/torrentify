@@ -11,6 +11,8 @@ class KickassParser
 
   # Parse values from html
   module Parser
+    BASEURL = 'https://kat.cr'
+
     def self.seeders(div)
       links = div.search(".//td[@class='red lasttd center']")
       value = ''
