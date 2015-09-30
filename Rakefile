@@ -34,9 +34,10 @@ Rake::TestTask.new(:integrationTest) do |t|
 end
 
 desc 'Run codeclimate - Sends coverage info to CodeClimate when in CI'
-task :codeclimate => :test do
+task :codeclimate do
   require 'simplecov'
   require 'codeclimate-test-reporter'
+  SimpleCov.command_name 'Unit Tests'
   SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter[
       SimpleCov::Formatter::HTMLFormatter,
       CodeClimate::TestReporter::Formatter
@@ -47,9 +48,10 @@ end
 require 'coveralls/rake/task'
 Coveralls::RakeTask.new
 desc 'Run Coveralls - Sends coverage info to coveralls.io when in CI'
-task :coveralls => [:test, 'coveralls:push'] do
+task :coveralls => 'coveralls:push' do
   require 'simplecov'
   require 'coveralls'
+  SimpleCov.command_name 'Unit Tests'
   SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter[
         SimpleCov::Formatter::HTMLFormatter,
         Coveralls::SimpleCov::Formatter
