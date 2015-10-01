@@ -38,7 +38,7 @@ class PirateBayParser
       links.each do |link|
         value = link.attributes['href']
       end
-      value
+      BASEURL + value
     end
 
     def self.torrent_name(div)

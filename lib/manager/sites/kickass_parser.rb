@@ -46,7 +46,7 @@ class KickassParser
       links.each do |link|
         value = link.attributes['href']
       end
-      value
+      'https:' + value
     end
 
     def self.torrent_name(div)

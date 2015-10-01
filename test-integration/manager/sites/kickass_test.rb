@@ -32,7 +32,7 @@ class TestKickassClass < Test::Unit::TestCase
 
     result = []
 
-    assert_raise('Net::HTTPNotFound') do
+    assert_nothing_raised do
       result = MechanizeManager.new.search_kickass(search_term)
     end
 

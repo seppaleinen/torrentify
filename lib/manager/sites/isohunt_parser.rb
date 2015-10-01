@@ -37,7 +37,7 @@ class IsohuntParser
 
     def self.torrent_url(div)
       links = div.search('.//a[@href]')
-      links[0].attributes['href']
+      BASEURL + links[0].attributes['href']
     end
 
     def self.torrent_name(div)
