@@ -6,12 +6,29 @@ require_relative 'manager/imdb_manager'
 # Main interface
 # Responsible for running manager-methods
 module Torrentify
-  def self.search(search_param)
+  def self.search(search_param, search_engine)
     manager = MechanizeManager.new
-    kickass = manager.search_kickass(search_param)
-    piratebay = manager.search_piratebay(search_param)
-    isohunt = manager.search_isohunt(search_param)
-    extratorrent = manager.search_extratorrent(search_param)
+    kickass = []
+    piratebay = []
+    isohunt = []
+    extratorrent = []
+    case "#{search_engine}"
+    when 'KICKASS'
+      kickass = manager.search_kickass(search_param)
+    when 'PIRATEBAY'
+      piratebay = manager.search_piratebay(search_param)
+    when 'ISOHUNT'
+      isohunt = manager.search_isohunt(search_param)
+    when 'PIRATEBAY'
+      extratorrent = manager.search_extratorrent(search_param)
+    when 'ALL'
+      kickass = manager.search_kickass(search_param)
+      piratebay = manager.search_piratebay(search_param)
+      isohunt = manager.search_isohunt(search_param)
+      extratorrent = manager.search_extratorrent(search_param)
+    else
+      fail 'not valid search_engine'
+    end
     [kickass, piratebay, isohunt, extratorrent]
   end
 
