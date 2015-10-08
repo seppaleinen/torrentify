@@ -5,6 +5,7 @@ require_relative '../../model/torrent_model'
 # Class responsible for parsing
 # the page response from kickass
 class KickassParser
+  # Takes mechanize page
   def initialize(page)
     @page = page
   end
@@ -13,6 +14,7 @@ class KickassParser
   module Parser
     BASEURL = 'https://kat.cr'
 
+    # Extracts amount of leechers on torrent
     def self.seeders(div)
       links = div.search(".//td[@class='red lasttd center']")
       value = ''
@@ -22,6 +24,7 @@ class KickassParser
       value
     end
 
+    # Extracts amount of leechers on torrent
     def self.leechers(div)
       links = div.search(".//td[@class='green center']")
       value = ''
@@ -31,6 +34,7 @@ class KickassParser
       value
     end
 
+    # Extracts size on torrent
     def self.size(div)
       links = div.search(".//td[@class='nobr center']")
       value = ''
@@ -40,6 +44,7 @@ class KickassParser
       value
     end
 
+    # Extracts torrent url
     def self.torrent_url(div)
       links = div.search(".//a[@title='Download torrent file']")
       value = ''
@@ -49,6 +54,7 @@ class KickassParser
       'https:' + value
     end
 
+    # Extracts torrent name
     def self.torrent_name(div)
       links = div.search(".//a[@class='cellMainLink']")
       value = ''
@@ -59,6 +65,10 @@ class KickassParser
     end
   end
 
+  # Main method of class
+  # Makes a list of all the torrent on a page
+  # and loops through them, extracting information from Parser.
+  # Returns a list of torrent-objects
   def main_divs
     divs = @page.search(".//tr[@class='even' or @class='odd']")
     torrents = []

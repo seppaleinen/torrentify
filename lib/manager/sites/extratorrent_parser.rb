@@ -5,6 +5,7 @@ require_relative '../../model/torrent_model'
 # Class responsible for parsing
 # the page response from kickass
 class ExtratorrentParser
+  # Takes mechanize-page
   def initialize(page)
     @page = page
   end
@@ -13,6 +14,7 @@ class ExtratorrentParser
   module Parser
     BASEURL = 'http://extratorrent.cc'
 
+    # Extracts amount of seeders on torrent
     def self.seeders(div)
       links = div.search(".//td[@class='sy']")
       value = ''
@@ -22,6 +24,7 @@ class ExtratorrentParser
       value
     end
 
+    # Extracts amount of leechers on torrent
     def self.leechers(div)
       links = div.search(".//td[@class='ly']")
       value = ''
@@ -31,16 +34,19 @@ class ExtratorrentParser
       value
     end
 
+    # Extracts size on torrent
     def self.size(div)
       links = div.search('.//td')
       links[3].content
     end
 
+    # Extracts torrent url
     def self.torrent_url(div)
       links = div.search('.//a')
       BASEURL + links[0].attributes['href']
     end
 
+    # Extracts torrent name
     def self.torrent_name(div)
       links = div.search('.//a')
       # Get link title and strip Download och torrent from result
@@ -49,6 +55,10 @@ class ExtratorrentParser
     end
   end
 
+  # Main method of class
+  # Makes a list of all the torrent on a page
+  # and loops through them, extracting information from Parser.
+  # Returns a list of torrent-objects
   def main_divs
     divs = @page.search(".//tr[@class='tlr' or @class='tlz']")
     torrents = []
