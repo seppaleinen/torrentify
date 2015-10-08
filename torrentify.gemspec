@@ -4,7 +4,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
 Gem::Specification.new do |spec|
   spec.name          = 'torrentify'
-  spec.version       = 0.4
+  spec.version       = 0.5
   spec.authors       = ['david eriksson']
   spec.email         = ['davideriksson@swedenmail.com']
 
