@@ -1,5 +1,6 @@
 #!/usr/bin/ruby
 require 'mechanize'
+require_relative 'sites/imdb_parser'
 
 # Class responsible for connecting to imdb
 # e.g getting user watchlist
@@ -15,18 +16,13 @@ class ImdbManager
     end
   end
 
+  # Creates request parameter
   def get_watchlist(userid)
     rss_url = 'http://rss.imdb.com/user/userid/watchlist'
     url = rss_url.gsub('userid', userid)
-    titles = []
     begin
       page = Agent.get_web_page(url)
-      items = page.search('.//item')
-      items.each do |item|
-        title = item.search('.//title')[0].content
-        titles.push(title)
-      end
-      titles
+      ImdbParser.new(page).main_divs
     rescue
       []
     end

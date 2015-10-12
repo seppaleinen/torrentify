@@ -7,11 +7,8 @@ require_relative 'sites/piratebay_parser'
 require_relative 'sites/isohunt_parser'
 require_relative 'sites/extratorrent_parser'
 
-# Manager responsible for scraping webpagem
+# Manager responsible for scraping webpages
 class MechanizeManager
-  def initialize
-  end
-
   # Module responsible for calling mechanize
   module Agent
     def self.get_web_page(url)
@@ -23,6 +20,10 @@ class MechanizeManager
     end
   end
 
+  # Creates request parameter and passes mechanize-page result
+  # to KickassParser.main_divs
+  # Takes search_term
+  # Returns list of torrents or empty list if error.
   def search_kickass(search_term)
     white_space = '%20'
     baseurl = KickassParser::Parser::BASEURL
@@ -37,6 +38,10 @@ class MechanizeManager
     end
   end
 
+  # Creates request parameter and passes mechanize-page result
+  # to PirateBayParser.main_divs
+  # Takes search_term
+  # Returns list of torrents or empty list if error.
   def search_piratebay(search_term)
     white_space = '%20'
     baseurl = PirateBayParser::Parser::BASEURL
@@ -51,6 +56,10 @@ class MechanizeManager
     end
   end
 
+  # Creates request parameter and passes mechanize-page result
+  # to IsohuntParser.main_divs
+  # Takes search_term
+  # Returns list of torrents or empty list if error.
   def search_isohunt(search_term)
     white_space = '%20'
     baseurl = IsohuntParser::Parser::BASEURL
@@ -65,33 +74,21 @@ class MechanizeManager
     end
   end
 
+  # Creates request parameter and passes mechanize-page result
+  # to ExtratorrentParser.main_divs
+  # Takes search_term
+  # Returns list of torrents or empty list if error.
   def search_extratorrent(search_term)
     white_space = '+'
     baseurl = ExtratorrentParser::Parser::BASEURL
     extratorrent_url = baseurl + '/search/?search='
     url = extratorrent_url + search_term.gsub(' ', white_space)
 
-    # result = extra_torrent_cloudflare_ddos_breaker(url)
     begin
       page = Agent.get_web_page(url)
       ExtratorrentParser.new(page).main_divs
     rescue
       []
     end
-  end
-
-  def extra_torrent_cloudflare_ddos_breaker(url)
-    response = Typhoeus::Request.get(url, :cookiefile => '.typhoeus_cookies', :cookiejar => '.typhoeus_cookies')
-    body = response.response_body
-    challenge = body.match(%r{name="jschl_vc"\s*value="([a-zA-Z0-9]+)"/\>}).captures[0]
-    math = body.match(/a\.value\s*=\s*(.+?\d?);/).captures[0]
-    domain = url.split('/')[2]
-    answer = eval(math) + domain.length
-    asd = '/cdn-cgi/l/chk_jschl?jschl_vc='
-    answer_url = domain + asd + "#{challenge}&jschl_answer=#{answer}"
-    puts answer_url
-    html = Typhoeus.get(answer_url, :followlocation => true)
-    body = html.response_body
-    puts 'body' + body
   end
 end
