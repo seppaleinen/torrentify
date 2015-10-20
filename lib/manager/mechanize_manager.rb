@@ -11,6 +11,7 @@ require_relative 'sites/extratorrent_parser'
 class MechanizeManager
   # Module responsible for calling mechanize
   module Agent
+    # Static method responsible for calling url and returning page object
     def self.get_web_page(url)
       agent = Mechanize.new
       agent.pluggable_parser.default = Mechanize::Page

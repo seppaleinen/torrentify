@@ -6,7 +6,11 @@ require_relative 'manager/imdb_manager'
 # Main interface
 # Responsible for running manager-methods
 module Torrentify
-  def self.search(search_param, search_engine)
+  # Static method for searching torrent-sites
+  # Takes string parameter search_param
+  # And string parameter search_engine which defines which sites
+  # to search and defaults to ALL
+  def self.search(search_param, search_engine = 'ALL')
     manager = MechanizeManager.new
     kickass = []
     piratebay = []
@@ -32,6 +36,8 @@ module Torrentify
     [kickass, piratebay, isohunt, extratorrent]
   end
 
+  # Static method for searching through all sites and returning
+  # the best from each of them.
   def self.search_all_return_best(search_param)
     manager = MechanizeManager.new
     kickass = manager.search_kickass(search_param)
@@ -47,10 +53,12 @@ module Torrentify
     [kickass.last, piratebay.last, isohunt.last, extratorrent.last]
   end
 
+  # Static private method responsible for sorting torrent-file
   def self.__sort_result__(result)
     result.sort_by { |e| [e.seeders.to_i, e.leechers.to_i] }
   end
 
+  # Static method for getting imdb watch-list results
   def self.imdb_watchlist(userid)
     ImdbManager.new.get_watchlist(userid)
   end

@@ -2,6 +2,7 @@
 
 # Model for saving torrent info
 class Torrent
+  # Fast init for class
   def initialize(torrent_file, name, size, seeders, leechers)
     @torrent_file = torrent_file
     @name = name
@@ -10,6 +11,7 @@ class Torrent
     @leechers = leechers
   end
 
+  # Overrides to_s method
   def to_s
     string = StringIO.open do |s|
       s.puts 'torrent_file: ' + @torrent_file.to_s
@@ -22,9 +24,14 @@ class Torrent
     string
   end
 
+  # Accessor for torrent url
   attr_reader :torrent_file
+  # Accessor for torrent name
   attr_reader :name
+  # Accessor for torrent size
   attr_reader :size
+  # Accessor for torrent seeders
   attr_reader :seeders
+  # Accessor for torrent leechers
   attr_reader :leechers
 end

@@ -7,6 +7,7 @@ require_relative 'sites/imdb_parser'
 class ImdbManager
   # Module responsible for setting up mechanize-agent
   module Agent
+    # Agent method responsible for calling url and returning page object
     def self.get_web_page(url)
       agent = Mechanize.new
       # Default File implementation does not work

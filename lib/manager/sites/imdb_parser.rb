@@ -5,6 +5,7 @@ require_relative '../../model/torrent_model'
 # Class responsible for parsing
 # the page response from imdb
 class ImdbParser
+  # Init method. Takes mechanize page as parameter
   def initialize(page)
     @page = page
   end
