@@ -28,7 +28,7 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency 'mechanize', '2.7.4'
   spec.add_runtime_dependency 'typhoeus', '0.8.0'
   spec.add_development_dependency 'simplecov', '0.11.1'
-  spec.add_development_dependency 'bundler', '1.10.6'
+  spec.add_development_dependency 'bundler', '1.11.2'
   spec.add_development_dependency 'rake', '10.4.2'
   spec.add_development_dependency 'codeclimate-test-reporter', '0.4.8'
   spec.add_development_dependency 'coveralls', '0.8.10'
