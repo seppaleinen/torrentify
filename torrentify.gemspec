@@ -26,7 +26,7 @@ Gem::Specification.new do |spec|
   spec.require_paths = ['lib']
 
   spec.add_runtime_dependency 'mechanize', '2.7.4'
-  spec.add_runtime_dependency 'typhoeus', '0.8.0'
+  spec.add_runtime_dependency 'typhoeus', '1.0.0'
   spec.add_development_dependency 'simplecov', '0.11.1'
   spec.add_development_dependency 'bundler', '1.11.2'
   spec.add_development_dependency 'rake', '10.4.2'
@@ -35,5 +35,5 @@ Gem::Specification.new do |spec|
   #spec.add_development_dependency 'rspec', '3.3.0'
   spec.add_development_dependency 'test-unit', '3.1.5'
   spec.add_development_dependency 'rubocop', '0.35.1'
-  spec.add_development_dependency 'webmock', '1.22.3'
+  spec.add_development_dependency 'webmock', '1.22.6'
 end
