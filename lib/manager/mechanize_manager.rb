@@ -1,7 +1,6 @@
 #!/usr/bin/ruby
 require 'rubygems'
 require 'mechanize'
-require 'typhoeus'
 require_relative 'sites/kickass_parser'
 require_relative 'sites/piratebay_parser'
 require_relative 'sites/isohunt_parser'
